@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper-product">
+
+	<insert id="insertDB" parameterType="com.penta.product.ProductVO">
+		insert into productinfo(p_index,p_vendor,p_name,p_version)
+		values(P_Index.NEXTVAL,#{pVendor},#{pName},#{pVersion})
+	</insert>
+
+	<update id="updateDB" parameterType="com.penta.product.ProductVO">
+		update productinfo
+		set p_vendor=#{pVendor},p_name=#{pName},p_version=#{pVersion}
+		where p_index = #{pIndex}
+	</update>
+	
+	<delete id="deleteDB" parameterType="int">
+		delete
+		from productinfo
+		where p_index = #{pIndex}
+	</delete>
+	
+	<select id="getDBList" resultType="com.penta.product.ProductVO">
+		select *
+		from productinfo
+	</select>
+	
+	<select id="getDBById" resultType="com.penta.product.ProductVO" parameterType="int">
+		select *
+		from productinfo
+		where p_index = #{pIndex}
+	</select>
+	
+</mapper>

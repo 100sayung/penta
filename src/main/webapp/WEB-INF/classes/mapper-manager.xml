@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper-manager">
+
+	<insert id="insertDB" parameterType="com.penta.manager.ManagerVO">
+		insert into customeruser(m_index,m_com,m_id,m_name,m_addr,m_hp,m_tel,m_email,m_task,m_workcom,m_workemail,m_memo)
+		values(CUSTUSER_SEQ.NEXTVAL,#{mCom},#{mId},#{mName},#{mAddr},#{mHp},#{mTel},#{mEmail},#{mTask},#{mWorkcom},#{mWorkemail},#{mMemo})
+	</insert>
+
+	<update id="updateDB" parameterType="com.penta.manager.ManagerVO">
+		update customeruser
+		set m_com=#{mCom},m_id=#{mId},m_name=#{mName},m_addr=#{mAddr},m_hp=#{mHp},m_tel=#{mTel},m_email=#{mEmail},m_task=#{mTask},m_workcom=#{mWorkcom},m_workemail=#{mWorkemail},m_memo=#{mMemo}
+		where m_index = #{mIndex}
+	</update>
+	
+	<delete id="deleteDB" parameterType="int">
+		delete
+		from customeruser
+		where m_index = #{mIndex}
+	</delete>
+	
+	<select id="getDBList" resultType="com.penta.manager.ManagerVO">
+		select *
+		from customeruser
+	</select>
+	
+	<select id="getDBById" resultType="com.penta.manager.ManagerVO" parameterType="int">
+		select *
+		from customeruser
+		where m_index = #{mIndex}
+	</select>
+	
+</mapper>

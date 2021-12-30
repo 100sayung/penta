@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.penta.customer.CustomerDAO">
+	<select id="test" resultType="com.penta.common.PentaUserVO">
+		select * from PENTAUSER
+	</select>
+	
+	<insert id="registCustomer" parameterType="com.penta.customer.CustomerVO">
+		INSERT INTO customer
+					(C_Index, C_Name, C_Addr, C_Sales)
+			VALUES (CUSTOMER_SEQ.nextval, #{cName}, #{cAddr}, #{cSales})
+		
+	</insert>
+	<insert id="registCustomerInfo" parameterType="com.penta.customer.CustomerVO">
+		INSERT INTO CUSTOMERINFO
+					(C_INDEX, P_NAME, CI_SFTVER, CI_HWOS,
+					CI_SYSTEM, CI_CHECK, CI_MONTHLY, CI_DEGREE,
+					CI_MEMO, P_ID)
+			VALUES (CUSTOMER_SEQ.currval, #{pName}, #{ciSftVer}, #{ciHWOS},
+					#{ciSystem}, #{ciCheck}, #{ciMonthly}, #{ciDegree},
+					#{ciMemo}, #{pId})
+		
+	</insert>
+	
+	<select id="getCustomerListFromPId" parameterType="String" resultType="com.penta.customer.CustomerVO">
+		SELECT * FROM CUSTOMER c
+			LEFT OUTER JOIN CUSTOMERINFO ci
+			ON c.C_Index = ci.C_Index
+			WHERE ci.P_Id = #{pId}
+	</select>
+	
+</mapper>
