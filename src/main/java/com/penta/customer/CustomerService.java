@@ -1,6 +1,7 @@
 package com.penta.customer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,8 +40,22 @@ public class CustomerService {
 		cDao.registCustomerInfo(cvo);
 	}
 
-	public String getCustomerListFromPId(String pId) {
+	public List<CustomerVO> getCustomerListFromPId(String pId) {
 		// TODO Auto-generated method stub
-		return makeTable(cDao.getCustomerListFromPId(pId)).toString();
+//		return makeTable(cDao.getCustomerListFromPId(pId)).toString();
+		return cDao.getCustomerListFromPId(pId);
+	}
+
+
+	public CustomerVO getCustomerInfo(int cIndex) {
+		
+		return cDao.getCustomerInfo(cIndex);
+	}
+
+
+	@Transactional
+	public void updateCustomer(CustomerVO cvo) {
+		cDao.updateCustomer(cvo);
+		cDao.updateCustomerInfo(cvo);
 	}
 }

@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.google.gson.JsonElement;
+
 @Repository
 public class ProductDAO {
 	@Autowired
@@ -19,7 +21,6 @@ public class ProductDAO {
 		return session.selectList("mapper-product.getDBList");
 	}
 
-
 	public int updateDB(ProductVO pvo) throws Exception {	
 		return session.update("mapper-product.updateDB",pvo);
 	}
@@ -31,5 +32,12 @@ public class ProductDAO {
 
 	public ProductVO getDBById(int pidx) {
 		return session.selectOne("mapper-product.getDBById", pidx);
+	}
+
+	public List<String> getProductVersion(String pName) {
+		return session.selectList("mapper-product.getProductVersion", pName);
+	}
+	public List<String> getProductDistinct(){
+		return session.selectList("mapper-product.getProductDistinct");
 	}
 }

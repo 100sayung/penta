@@ -14,21 +14,21 @@ import com.google.gson.Gson;
 import com.penta.customer.CustomerDAO;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/customer/rest")
 public class CustomRestController {
 
 	@Autowired
 	private CustomerDAO cDao;
 	
 	@ResponseBody
-	@RequestMapping(value="/rest/get-customerinfo", produces = "application/text; charset=utf8")
+	@RequestMapping(value="/get-customerinfo", produces = "application/text; charset=utf8")
 	public String getCustomInfo(String idx_s){
 		int idx = Integer.parseInt(idx_s);
 		return new Gson().toJson(cDao.getCustomerInfo(idx));
 	}
 	
 	@Transactional
-	@RequestMapping(value="/rest/delete-customerinfo")
+	@RequestMapping(value="/delete-customerinfo")
 	public void deleteCustomerinfo(String idx_s) {
 		int idx = Integer.parseInt(idx_s);
 		cDao.deleteCustomerinfo(idx);

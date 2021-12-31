@@ -1,4 +1,4 @@
-<%@page import="com.penta.common.CommonVO"%>
+<%-- <%@page import="com.penta.common.CommonVO"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" errorPage="common_error.jsp" import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>

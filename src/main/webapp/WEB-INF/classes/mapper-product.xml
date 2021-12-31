@@ -3,20 +3,20 @@
 <mapper namespace="mapper-product">
 
 	<insert id="insertDB" parameterType="com.penta.product.ProductVO">
-		insert into productinfo(p_index,p_vendor,p_name,p_version)
-		values(P_Index.NEXTVAL,#{pVendor},#{pName},#{pVersion})
+		insert into productinfo(p_Index,p_Vendor,p_Name,p_Version)
+		values(CUSTUSER_SEQ.NEXTVAL,#{pVendor},#{pName},#{pVersion})
 	</insert>
 
 	<update id="updateDB" parameterType="com.penta.product.ProductVO">
 		update productinfo
-		set p_vendor=#{pVendor},p_name=#{pName},p_version=#{pVersion}
-		where p_index = #{pIndex}
+		set p_Vendor=#{pVendor},p_Name=#{pName},p_Version=#{pVersion}
+		where p_Index = #{pIndex}
 	</update>
 	
 	<delete id="deleteDB" parameterType="int">
 		delete
 		from productinfo
-		where p_index = #{pIndex}
+		where p_Index = #{pIndex}
 	</delete>
 	
 	<select id="getDBList" resultType="com.penta.product.ProductVO">
@@ -27,7 +27,16 @@
 	<select id="getDBById" resultType="com.penta.product.ProductVO" parameterType="int">
 		select *
 		from productinfo
-		where p_index = #{pIndex}
+		where p_Index = #{pIndex}
+	</select>
+	
+	<select id="getProductVersion" resultType="String" parameterType="String">
+		select P_VERSION
+		from productinfo
+		where P_NAME = #{pName}
+	</select>
+	<select id="getProductDistinct" resultType="String">
+		select P_NAME from productinfo group by P_NAME
 	</select>
 	
 </mapper>

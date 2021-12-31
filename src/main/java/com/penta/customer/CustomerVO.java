@@ -11,7 +11,7 @@ public class CustomerVO {
 	private String cName;
 	private String cAddr;
 	private String cSales;
-	private String ciSftVer;
+	private String pVersion;
 	private String pName;
 	private String ciHWOS;
 	private String ciSystem;

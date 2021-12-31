@@ -21,11 +21,14 @@ public interface CustomerDAO {
 
 	public void registCustomerInfo(CustomerVO cvo);
 
-	public ArrayList<CustomerVO> getCustomerListFromPId(String pId);
+	public List<CustomerVO> getCustomerListFromPId(String pId);
 
 	@Delete("delete from customerinfo where C_Index = #{idx}")
 	public void deleteCustomerinfo(int idx);
 
 	@Delete("delete from customer where C_Index = #{idx}")
 	public void deleteCustomer(int idx);
+
+	public void updateCustomer(CustomerVO cvo);
+	public void updateCustomerInfo (CustomerVO cvo);
 }

@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper-product">
 
-	<insert id="insertDB" parameterType="com.penta.product.productVO">
+	<insert id="insertDB" parameterType="com.penta.product.ProductVO">
 		insert into productinfo(p_Index,p_Vendor,p_Name,p_Version)
 		values(CUSTUSER_SEQ.NEXTVAL,#{pVendor},#{pName},#{pVersion})
 	</insert>
 
-	<update id="updateDB" parameterType="com.penta.product.productVO">
+	<update id="updateDB" parameterType="com.penta.product.ProductVO">
 		update productinfo
 		set p_Vendor=#{pVendor},p_Name=#{pName},p_Version=#{pVersion}
 		where p_Index = #{pIndex}
@@ -19,15 +19,24 @@
 		where p_Index = #{pIndex}
 	</delete>
 	
-	<select id="getDBList" resultType="com.penta.product.productVO">
+	<select id="getDBList" resultType="com.penta.product.ProductVO">
 		select *
 		from productinfo
 	</select>
 	
-	<select id="getDBById" resultType="com.penta.product.productVO" parameterType="int">
+	<select id="getDBById" resultType="com.penta.product.ProductVO" parameterType="int">
 		select *
 		from productinfo
 		where p_Index = #{pIndex}
+	</select>
+	
+	<select id="getProductVersion" resultType="String" parameterType="String">
+		select P_VERSION
+		from productinfo
+		where P_NAME = #{pName}
+	</select>
+	<select id="getProductDistinct" resultType="String">
+		select P_NAME from productinfo group by P_NAME
 	</select>
 	
 </mapper>
