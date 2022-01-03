@@ -1,6 +1,6 @@
-<%@page import="com.penta.common.CommonVO"%>
+<%@page import="com.penta.service.ServiceVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" errorPage="common_error.jsp" import="java.util.*"%>
+    pageEncoding="UTF-8" errorPage="service_error.jsp" import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
@@ -11,7 +11,7 @@
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>common:list</title>
+<title>service:list</title>
 </head>
 
 
@@ -19,7 +19,7 @@
 <div class="page-header">
   <h1>ServcieOP <small>공통 Code 값</small></h1>
 </div>
-<a href="common_form.do" class="btn btn-default btn-lg">공통 코드 등록</a>
+<a href="service_form.do" class="btn btn-default btn-lg">공통 코드 등록</a>
 <a href="/suptman" class="btn btn-default btn-lg">홈으로</a>
 
 <form>
@@ -40,8 +40,8 @@
       <td>${cov.comValue}</td>
      
       <td>
-          <input type="button" class="btn btn-default" onclick="location.href='common_edit.do?cidx=${cov.comIndex}'" value="변경">
-          <input type="button" class="btn btn-default" onclick="location.href='delete_common.do?cidx=${cov.comIndex}'" value="삭제">
+          <input type="button" class="btn btn-default" onclick="location.href='service_edit.do?cidx=${cov.comIndex}'" value="변경">
+          <input type="button" class="btn btn-default" onclick="location.href='delete_service.do?cidx=${cov.comIndex}'" value="삭제">
       </td>
     </tr>
     </c:forEach>

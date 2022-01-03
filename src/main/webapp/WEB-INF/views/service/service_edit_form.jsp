@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" errorPage="common_error.jsp"%>
+    pageEncoding="UTF-8" errorPage="service_error.jsp"%>
 <!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>common:edit</title>
+<title>service:edit</title>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap-3.3.2-dist/css/bootstrap.min.css">
 
@@ -16,13 +16,13 @@
 <h1>ServcieOP <small>공통 코드 변경</small></h1>
 </div>
 
-<a href="common_list.do" class="btn btn-default btn-lg">공통 코드 리스트로</a>
+<a href="service_list.do" class="btn btn-default btn-lg">공통 코드 리스트로</a>
 <a href="/suptman" class="btn btn-default btn-lg">홈으로</a>
 
 
 <div style="margin:0 auto; width: 500px;">
 
-<form method=post action="edit_common.do" id="editFrm">
+<form method=post action="edit_service.do" id="editFrm">
   <div class="form-group">
     <input type="hidden" name="comIndex" id="comIndex" value="${cvo.comIndex}">
     <label class="control-label" for="cId">그룹코드*</label>

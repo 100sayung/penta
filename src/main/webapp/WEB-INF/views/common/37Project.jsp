@@ -53,7 +53,7 @@
       </tr>
       <tr>
         <td class="tg-0lax"><span style="font-weight:inherit;font-style:inherit;color:inherit">AdminServer Name </span></td>
-        <td class="tg-0lax"><span style="font-weight:inherit;font-style:inherit;color:inherit">so_admin </span></td>
+        <td class="tg-0lax"><span style="font-weight:inherit;font-style:inherit;color:inherit">so_admin <a href="http://192.168.100.37:12370/console">console soadmin Sopenta1! </a></span></td>
       </tr>
       <tr>
         <td class="tg-0lax"><span style="font-weight:inherit;font-style:inherit;color:inherit">AdminServer Port </span></td>

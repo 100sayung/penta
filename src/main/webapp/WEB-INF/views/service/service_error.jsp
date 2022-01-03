@@ -4,7 +4,7 @@
 <HTML>
 <body>
 <div align="center">
-<H2>Common 에러</H2>
+<H2>service 에러</H2>
 <HR>
 <table cellpadding=5 width=400>
 <tr style="width:100%;background-color:white"><td>

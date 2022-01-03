@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper-service">
+
+	<insert id="insertDB" parameterType="com.penta.service.ServiceVO">
+		insert into com_code(ComIndex,Com_Id,Com_Key,Com_Value)
+		values(comcodeindex.nextval,#{ComId},#{ComKey},#{ComValue})
+	</insert>
+
+	<update id="updateDB" parameterType="com.penta.service.ServiceVO">
+		update com_code
+		set Com_Id=#{ComId},Com_Key=#{ComKey},Com_Value=#{ComValue}
+		where ComIndex = #{ComIndex}
+	</update>
+
+	<delete id="deleteDB" parameterType="int">
+		delete
+		from com_code
+		where ComIndex = #{ComIndex}
+	</delete>
+	
+	<select id="getDBList" resultType="com.penta.service.ServiceVO">
+		select *
+		from com_code
+	</select>
+	
+	<select id="getDBById" resultType="com.penta.service.ServiceVO" parameterType="int">
+		select *
+		from com_code
+		where ComIndex = #{ComIndex}
+	</select>
+	
+</mapper>

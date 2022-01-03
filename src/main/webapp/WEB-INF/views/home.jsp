@@ -78,7 +78,7 @@ Oracle Link<br>
       <td><a href="/suptman/manager/manager_list.do" class="btn btn-default btn-lg" >고객 담당자 리스트</a></td>
     </tr>    
     <tr>     
-      <td></td>
+      <td>안일훈</td>
       <td><a href="/suptman/service/service_list.do" class="btn btn-default btn-lg" >지원 내역(Support) 리스트</a></td>
     </tr>
   </tbody>
