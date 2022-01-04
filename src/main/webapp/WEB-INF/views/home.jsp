@@ -24,7 +24,7 @@
   </thead>
   <tbody>
     <tr>      
-      <td colspan="2" rowspan="5">
+      <td colspan="2" rowspan="6">
         Oracle PSU 정리 <br>
 
 - psu file download 파일 서버 upload 후 다운로드 링크 공유<br>
@@ -76,6 +76,10 @@ Oracle Link<br>
     <tr>      
       <td>박기범</td>
       <td><a href="/suptman/manager/manager_list.do" class="btn btn-default btn-lg" >고객 담당자 리스트</a></td>
+    </tr>
+    <tr>     
+      <td>안일훈</td>
+      <td><a href="/suptman/penta/penta_list.do" class="btn btn-default btn-lg" >팀원 리스트</a></td>
     </tr>    
     <tr>     
       <td>안일훈</td>

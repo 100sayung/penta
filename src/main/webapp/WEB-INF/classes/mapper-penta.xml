@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper-penta">
+
+	<insert id="insertDB" parameterType="com.penta.penta.PentaVO">
+		insert into pentauser(pIndex,pId,pName,pRank,pHp,pEmail, pAddr, pType, pStatus, pMemo)
+		values(PENTAUSER_SEQ.nextval,#{pId},#{pName},#{pRank},#{pHp},#{pEmail},#{pAddr},#{pType},#{pStatus},#{pMemo})
+	</insert>
+
+	<update id="updateDB" parameterType="com.penta.penta.PentaVO">
+		update pentauser
+		set pId=#{pId},pName=#{pName},pRank=#{pRank},pHp=#{pHp},pEmail=#{pEmail},pAddr=#{pAddr},pType=#{pType},pStatus=#{pStatus},pMemo=#{pMemo}
+		where pIndex = #{pIndex}
+	</update>
+
+	<delete id="deleteDB" parameterType="int">
+		delete
+		from pentauser
+		where pIndex = #{pIndex}
+	</delete>
+	
+	<select id="getDBList" resultType="com.penta.penta.PentaVO">
+		select *
+		from pentauser
+	</select>
+	
+	<select id="getDBById" resultType="com.penta.penta.PentaVO" parameterType="int">
+		select *
+		from pentauser
+		where pIndex = #{pIndex}
+	</select>
+	
+</mapper>
