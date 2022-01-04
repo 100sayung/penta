@@ -13,10 +13,10 @@
 
 
 <div class="page-header">
-<h1>ServcieOP <small>공통 코드 등록</small></h1>
+<h1>ServcieOP <small>Service 내역 등록</small></h1>
 </div>
 
-<a href="service_list.do" class="btn btn-default btn-lg">공통 코드 리스트로</a>
+<a href="service_list.do" class="btn btn-default btn-lg">서비스 내역 리스트로</a>
 <a href="/suptman" class="btn btn-default btn-lg">홈으로</a>
 
 
@@ -42,11 +42,8 @@
 </form>
 </div>
 
-
 <div class="page-header">
 </div>
-<h1>ServcieOP <small>고객 등록</small></h1>
-
 
 <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

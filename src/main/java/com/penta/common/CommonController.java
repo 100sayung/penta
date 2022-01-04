@@ -32,8 +32,7 @@ public class CommonController {
     }
 
 	@RequestMapping(value="edit_common.do", method=RequestMethod.POST)
-	public String edit(CommonVO cvo) throws Exception {
-		//System.out.println(vo.getcComid());
+	public String edit(CommonVO cvo) throws Exception {	
 		dao.updateDB(cvo);
 		return "redirect:common_list.do";
 	}
