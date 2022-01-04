@@ -17,9 +17,9 @@
 
 <body>
 <div class="page-header">
-  <h1>ServcieOP <small>공통 Code 값</small></h1>
+  <h1>ServcieOP <small>서비스 내역 리스트</small></h1>
 </div>
-<a href="service_form.do" class="btn btn-default btn-lg">공통 코드 등록</a>
+<a href="service_form.do" class="btn btn-default btn-lg">서비스 내역 등록</a>
 <a href="/suptman" class="btn btn-default btn-lg">홈으로</a>
 
 <form>
