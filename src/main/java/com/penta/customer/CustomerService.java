@@ -8,12 +8,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.penta.customer.CustomerDAO;
+import com.penta.penta.PentaDAO;
+import com.penta.penta.PentaVO;
 
 @Service
 public class CustomerService {
 
 	@Autowired
 	CustomerDAO cDao;
+	@Autowired
+	PentaDAO pDao;
 	
 	public String getCustomInfoBasic() {
 		
@@ -37,19 +41,16 @@ public class CustomerService {
 	@Transactional
 	public void registCustomer(CustomerVO cvo) {
 		cDao.registCustomer(cvo);
-		cDao.registCustomerInfo(cvo);
 	}
-
-	public List<CustomerVO> getCustomerListFromPId(String pId) {
-		// TODO Auto-generated method stub
-//		return makeTable(cDao.getCustomerListFromPId(pId)).toString();
-		return cDao.getCustomerListFromPId(pId);
+	
+	public void registCustomerInfo(CustomerInfoVO civo) {
+		cDao.registCustomerInfo(civo);
 	}
 
 
-	public CustomerVO getCustomerInfo(int cIndex) {
+	public CustomerVO getCustomerInfo(String cId) {
 		
-		return cDao.getCustomerInfo(cIndex);
+		return cDao.getCustomerInfo(cId);
 	}
 
 
@@ -57,5 +58,12 @@ public class CustomerService {
 	public void updateCustomer(CustomerVO cvo) {
 		cDao.updateCustomer(cvo);
 		cDao.updateCustomerInfo(cvo);
+	}
+
+
+
+	public List<PentaVO> getPentaUserList() throws Exception {
+		
+		return pDao.getDBList();
 	}
 }

@@ -29,5 +29,11 @@
 		from com_code
 		where ComIndex = #{ComIndex}
 	</select>
+
+	<select id="getDBByComIdList" resultType="com.penta.common.CommonVO" parameterType="String">
+		select *
+		from com_code
+		where Com_Id = #{ComId}
+	</select>
 	
 </mapper>

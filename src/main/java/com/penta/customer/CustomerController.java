@@ -20,8 +20,9 @@ public class CustomerController {
 	
 	//리스트 페이지로 이동
 	@GetMapping("/customer_list.do")
-	public ModelAndView moveCustomList() {
-		mav.addObject("customer", cService.getCustomerListFromPId("ndh1123"));//후에 세션값 받아서 해당 인원만 가져올 예정
+	public ModelAndView moveCustomList() throws Exception {
+//		mav.addObject("customer", cService.getCustomerListFromPId("ndh1123"));//후에 세션값 받아서 해당 인원만 가져올 예정
+		mav.addObject("engineer", cService.getPentaUserList());
 		mav.setViewName("customer/customer_list");
 		return mav;
 	}
@@ -33,20 +34,23 @@ public class CustomerController {
 		return "customer/customer_form";
 	}
 	
+	@GetMapping("/customer_info_regist.do")
+	public String moveCustomerInfoRegist() {
+		return "customer/customer_info_form";
+	}
+	
 	
 	@RequestMapping("/regist-customer")
-	public ModelAndView registCustomer(CustomerVO cvo) {
-		System.out.println(cvo);
+	public String registCustomer(CustomerVO cvo) {
 		cService.registCustomer(cvo);
-		System.out.println(cvo.getCName());
-		mav.setViewName("customer/customer_regist");
-		return mav;
+//		mav.setViewName("customer/customer_list");
+		return "redirect:customter_list.do";
 	}
 	
 	@RequestMapping("/customer_info.do")
-	public ModelAndView moveCustomerInfo(int cIndex) {
+	public ModelAndView moveCustomerInfo(String cId) {
 		
-		mav.addObject("customerInfo", cService.getCustomerInfo(cIndex));
+		mav.addObject("customerInfo", cService.getCustomerInfo(cId));
 		mav.setViewName("customer/customer_info");
 		return mav;
 	}

@@ -4,40 +4,70 @@
 	<select id="test" resultType="com.penta.common.PentaUserVO">
 		select * from PENTAUSER
 	</select>
-	
-	<insert id="registCustomer" parameterType="com.penta.customer.CustomerVO">
+
+	<insert id="registCustomer"
+		parameterType="com.penta.customer.CustomerVO">
 		INSERT INTO customer
-					(C_Index, C_Name, C_Addr, C_Sales)
-			VALUES (CUSTOMER_SEQ.nextval, #{cName}, #{cAddr}, #{cSales})
-		
+		(C_Index, C_Name, C_Addr, C_Sales, C_Id)
+		VALUES (CUSTOMER_SEQ.nextval, #{cName}, #{cAddr}, #{cSales}, #{cId})
+
 	</insert>
-	<insert id="registCustomerInfo" parameterType="com.penta.customer.CustomerVO">
+	<insert id="registCustomerInfo"
+		parameterType="com.penta.customer.CustomerVO">
 		INSERT INTO CUSTOMERINFO
-					(C_INDEX, P_NAME, P_VERSION, CI_HWOS,
-					CI_SYSTEM, CI_CHECK, CI_MONTHLY, CI_DEGREE,
-					CI_MEMO, P_ID)
-			VALUES (CUSTOMER_SEQ.currval, #{pName}, #{pVersion}, #{ciHWOS},
-					#{ciSystem}, #{ciCheck}, #{ciMonthly}, #{ciDegree},
-					#{ciMemo}, #{pId})
-		
+		(C_ID, P_NAME, P_VERSION, CI_HWOS,
+		CI_SYSTEM, CI_CHECK, CI_MONTHLY, CI_DEGREE,
+		CI_MEMO, P_ID)
+		VALUES (#{cId}, #{pName}, #{pVersion}, #{ciHWOS},
+		#{ciSystem}, #{ciCheck}, #{ciMonthly}, #{ciDegree},
+		#{ciMemo}, #{pId})
+
 	</insert>
-	<select id="getCustomerListFromPId" parameterType="String" resultType="com.penta.customer.CustomerVO">
-		SELECT * FROM CUSTOMER c
-			LEFT OUTER JOIN CUSTOMERINFO ci
-			ON c.C_Index = ci.C_Index
-			WHERE ci.P_Id = #{pId}
+	<select id="getCustomerListFromPId" parameterType="String"
+		resultType="com.penta.customer.CustomerVO">
+		SELECT c.* FROM CUSTOMER c
+		LEFT OUTER JOIN CUSTOMERINFO ci
+		ON c.C_Id = ci.C_Id
+		WHERE ci.P_Id = #{pId}
+
 	</select>
-	
-	<update id="updateCustomer" parameterType="com.penta.customer.CustomerVO">
+
+	<update id="updateCustomer"
+		parameterType="com.penta.customer.CustomerVO">
 		UPDATE CUSTOMER
-		SET C_Name=#{cName}, C_Addr=#{cAddr}, C_Sales=#{cSales}
+		SET C_Name=#{cName}, C_Addr=#{cAddr},
+		C_Sales=#{cSales}, C_Id=#{cId}
 		WHERE C_Index=#{cIndex}
 	</update>
-	<update id="updateCustomerInfo" parameterType="com.penta.customer.CustomerVO">
+	<update id="updateCustomerInfo"
+		parameterType="com.penta.customer.CustomerVO">
 		UPDATE CUSTOMERINFO
-		SET P_NAME=#{pName}, P_VERSION=#{pVersion}, CI_HWOS=#{ciHWOS}, CI_SYSTEM=#{ciSystem}, CI_CHECK=#{ciCheck}, CI_MONTHLY=#{ciMonthyl}, CI_DEGREE=#{ciDegree}
-		    CI_MEMO=#{ciMemo}, P_ID=#{pId}
-		WHERE C_INDEX = #{cIndex}
+		SET P_NAME=#{pName},
+		P_VERSION=#{pVersion}, CI_HWOS=#{ciHWOS}, CI_SYSTEM=#{ciSystem},
+		CI_CHECK=#{ciCheck}, CI_MONTHLY=#{ciMonthyl}, CI_DEGREE=#{ciDegree}
+		CI_MEMO=#{ciMemo}, P_ID=#{pId}
+		WHERE C_ID = #{cId}
 	</update>
-	
+
+	<select id="getCustomerInfo" parameterType="String"
+		resultType="com.penta.customer.CustomerInfoVO">
+		select c.C_ID,
+		c.c_sales,
+		c.c_addr,
+		c.c_name,
+		ci.ci_check,
+		ci.ci_degree,
+		ci.ci_memo,
+		ci.ci_monthly,
+		p.pname,
+		ci.p_id,
+		ci.ci_hwos,
+		ci.ci_system,
+		ci.p_name,
+		ci.p_version,
+		ci.p_id
+		from customer c, pentauser p, customerinfo ci
+		where c.c_id = ci.c_id and p.pid = ci.p_id
+	</select>
+
 </mapper>

@@ -32,19 +32,25 @@
 
 	<div class="container">
 	<div class="row">
-		<select name='pName' id='pName' onchange='changeSelection()'>
-			<option value="all" selected="selected">모두보기</option>
-			<c:forEach items="${engineer}" var="e">
-				<option value="${e.getPId()}">${e.getPName()}</option>
-			</c:forEach>
-		</select>
-			<div id="customerBody">
-			</div>
-		<br> <a href="/suptman/customer/customer_regist.do">추가하기</a>
+		<div class="col-md-6">
+			<table class='table table-striped'>
+				<thead><tr>
+					<th>고객사이름</th><th>제품</th><th>버전</th><th>담당엔지니어</th><th>비고</th></tr>
+				</thead><tbody>
+					<c:forEach items="${customerInfo}" var="ci">
+					<tr><td>${ci.getCName()}</td><td>${ci.getPName()}</td><td>${ci.getPVersion()}</td><td>${ci.getPentauser()}</td>
+					<td><button type='button' class='click btn btn-info' onclick='readInfo("${ci.getCId()}")'>자세히보기</button></td>
+					</c:forEach>		
+				</tbody>
+			</table>
+		</div>
+	<div class="col-md-6" id="test">
+		이곳에 자세한정보 출력
 	</div>
 	</div>
-	
-<button type="button" class="click btn btn-info" onclick="readInfo(penta)">자세히보기</button>
+	</div>
+
+
 								
 	<script type="text/javascript">
 	
@@ -53,7 +59,7 @@ function updateInfo(id) {
 }
 	
 function readInfo(id) {
-	location.href="/suptman/customer/customer_info_list.do?cId="+id;
+	$("#test").load("/suptman/customer/customer_info.do?cId="+id);
 }
 
 $(".click").click(function() {
@@ -72,34 +78,6 @@ function deleteClick(btn){
 		}
 	}); 
 }
-
-function changeSelection(){ //resource/js/getCustomer.js 참조
-	makeCustomerTable(getCustomerListFromPId($("#pName").val()));
-}
-
-function makeCustomerTable(customerList){
-	var str = "<table class='table table-striped' id='contents'><thead><tr>";
-	str +="<th>고객사ID</th><th>고객사이름</th><th>주소</th><th>담당영업</th><th>비고</th></tr></thead><tbody>";
-	console.log(customerList);
-	for(var c in customerList){
-		str += "<tr><td>" + customerList[c].cId + "</td>";
-		str += "<td>" + customerList[c].cName + "</td>";
-		str += "<td>" + customerList[c].cAddr + "</td>";
-		str += "<td>" + customerList[c].cSales + "</td>";
-		str += "<td><button type='button' class='click btn btn-info' onclick='readInfo(\""+customerList[c].cId+"\")'>자세히보기</button>";
-		str += "<button type='button' class='click btn btn-info' onclick='(\""+customerList[c].cId+"\")'>변경하기</button></td>";
-	}
-	str+="</tbody></table>";
-	$("#customerBody").html(str);
-	
-}
-
-//문서 로딩될 때 출력하기 위해
-$(function (){
-	makeCustomerTable(getCustomerListFromPId($("#pName").val()));
-})
-
-		//엔지니어 목
 	</script>
 </body>
 </html>

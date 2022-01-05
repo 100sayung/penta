@@ -1,5 +1,7 @@
+<%@page import="com.penta.common.CommonVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" errorPage="service_error.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -25,19 +27,49 @@
 
 <form method=post action="register_service.do" id="regFrm">
   <div class="form-group">
-    <label class="control-label" for="ComId">공통 그룹 코드</label>
-    <input type="text" size="4" maxlength="4" class="form-control" name="ComId" id="ComId" placeholder="공통 그룹 코드">
-  </div>
-  <div class="form-group">
+    <table class="table">
+      <tbody>      
+        <tr>
+          <th scope="row">지원 사이트</th>
+          <td><input type="hidden" class="form-control" name="sIndex" id="sIndex" placeholder="서비스인덱스">
+            <input type="hidden" class="form-control" name="cIndex" id="cIndex" placeholder="회사인덱스">
+
+            <select name='pType' id='pType'>              
+              <c:forEach items="${pType}" var="pType">
+                <option value="${pType.comKey}">${pType.comValue}</option>
+              </c:forEach>
+            </select>
+
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">지원 타입</th>
+          <td>
+            <select name='sType' id='sType'>              
+              <c:forEach items="${sType}" var="sType">
+                <option value="${sType.comKey}">${sType.comValue}</option>
+              </c:forEach>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">공통 그룹 코드</th>
+          <td><input type="text" size="4" maxlength="4" class="form-control" name="ComId" id="ComId" placeholder="공통 그룹 코드"></td>
+        </tr>
+        <tr>
+          <th scope="row">공통 그룹 코드</th>
+          <td><input type="text" size="4" maxlength="4" class="form-control" name="ComId" id="ComId" placeholder="공통 그룹 코드"></td>
+        </tr>
+      </tbody>
+  
     <label for="ComKey" class="control-label">공통 Key</label>
     <input type="text" size="4" maxlength="4" class="form-control" name="ComKey" id="ComKey" placeholder="공통 Key">
-  </div>
-  <div class="form-group">
+  
     <label for="ComValue" class="control-label">공통 값</label>
     <input type="text" size="50" class="form-control" name="ComValue" id="ComValue" placeholder="공통 값">
-  </div>  
-  <div class="form-group">
+  
     <input type="button" class="btn btn-default btn-lg btn-block" value="등록하기" id="rbtn" onclick='chkInp();'/>  
+    </table>
   </div>
 </form>
 </div>

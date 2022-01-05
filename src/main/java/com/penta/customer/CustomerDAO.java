@@ -9,17 +9,17 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import com.penta.customer.CustomerVO;
+import com.google.gson.JsonElement;
 import com.penta.common.PentaUserVO;
 
 
 public interface CustomerDAO {
 	
-	@Select("select * from customerinfo left outer join customer on customerinfo.C_Index = customer.C_Index where customer.C_Index = #{idx}")
-	public CustomerVO getCustomerInfo(int idx);
+	@Select("select * from customerinfo left outer join customer on customerinfo.C_Index = customer.C_Index where customer.C_Id = #{id}")
+	public CustomerVO getCustomerInfo(String id);
 
 	public void registCustomer(CustomerVO cvo);
-
-	public void registCustomerInfo(CustomerVO cvo);
+	public void registCustomerInfo(CustomerInfoVO civo);
 
 	public List<CustomerVO> getCustomerListFromPId(String pId);
 
@@ -31,4 +31,7 @@ public interface CustomerDAO {
 
 	public void updateCustomer(CustomerVO cvo);
 	public void updateCustomerInfo (CustomerVO cvo);
+
+	@Select("select * from customer")
+	public List<CustomerVO> getCustomerList();
 }

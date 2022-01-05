@@ -31,4 +31,8 @@ public class CommonDAO {
 	public CommonVO getDBById(int cidx) {
 		return session.selectOne("mapper-common.getDBById", cidx);
 	}
+
+	public List<CommonVO> getDBByComIdList(String ComId) throws Exception {
+		return session.selectList("mapper-common.getDBByComIdList", ComId);
+	}
 }

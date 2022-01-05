@@ -22,7 +22,7 @@ public class CustomRestController {
 	
 	@ResponseBody
 	@RequestMapping(value="/get-customerinfo", produces = "application/text; charset=utf8")
-	public String getCustomInfo(String idx_s){
+	public String getCustomerInfo(String idx_s){
 		int idx = Integer.parseInt(idx_s);
 		return new Gson().toJson(cDao.getCustomerInfo(idx));
 	}
@@ -33,6 +33,17 @@ public class CustomRestController {
 		int idx = Integer.parseInt(idx_s);
 		cDao.deleteCustomerinfo(idx);
 		cDao.deleteCustomer(idx);
+	}
+	
+	
+	@RequestMapping(value="/get-customerlist-frompid", produces = "application/text; charset=utf8")
+	public String getCustomerListFromPId(String pId) {
+		System.out.println(pId);
+		if(pId.equals("all")) {
+			System.out.println("I'm in all");
+			return new Gson().toJson(cDao.getCustomerList());
+		}
+		return new Gson().toJson(cDao.getCustomerListFromPId(pId));
 	}
 	
 }

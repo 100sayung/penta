@@ -92,7 +92,7 @@ function chkInp(){
 	var a=$("#mCom").val().replace(/ /g,"").length
 	var b=$("#mId").val().replace(/ /g,"").length
 	var c=$("#mName").val().replace(/ /g,"").length
-	var c=$("#mAddr").val().replace(/ /g,"").length
+	var e=$("#mAddr").val().replace(/ /g,"").length
 	var d=$("#mHp").val().replace(/ /g,"").length
 	var f=$("#mEmail").val().replace(/ /g,"").length
 	var g=$("#mTask").val().replace(/ /g,"").length

@@ -9,12 +9,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.penta.common.CommonVO;
+import com.penta.common.CommonDAO;
+
 @Controller
 @RequestMapping("/service")
 public class ServiceController {
 
     @Autowired
 	ServiceDAO dao;
+
+	@Autowired
+	CommonDAO ComDao;
 
     @RequestMapping(value="delete_service.do", method=RequestMethod.GET)
     public String delete(int cidx, HttpServletRequest req) throws Exception {
@@ -40,13 +46,21 @@ public class ServiceController {
     @RequestMapping("/service_list.do")
 	public String getList(HttpServletRequest req) throws Exception {
 		//DB
+
 		List<ServiceVO> list = dao.getDBList();
 		req.setAttribute("list", list);
 		return "service/service_list";
 	}
     
 	@RequestMapping("service_form.do")
-	public String getForm() {
+	public String getForm(HttpServletRequest req) throws Exception {
+
+		List<CommonVO> list = ComDao.getDBByComIdList("2000"); // 직급		
+		req.setAttribute("pType", list);
+
+		List<CommonVO> list1 = ComDao.getDBByComIdList("2200"); // 지원 타입
+		req.setAttribute("sType", list1);
+
 		return "service/service_form";
 	}
 	
