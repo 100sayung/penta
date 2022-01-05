@@ -39,26 +39,36 @@ public class CustomerController {
 		return "customer/customer_info_form";
 	}
 	
+	@GetMapping("/customer_info_list.do")
+	public ModelAndView moveCustomerInfoList(String cId) {
+		mav.addObject("customerInfo", cService.getCustomerInfo(cId));
+		mav.setViewName("customer/customer_info_list");
+		return mav;
+	}
 	
 	@RequestMapping("/regist-customer")
 	public String registCustomer(CustomerVO cvo) {
 		cService.registCustomer(cvo);
 //		mav.setViewName("customer/customer_list");
-		return "redirect:customter_list.do";
+		return "redirect:customer_list.do";
+	}
+	
+	@RequestMapping("/regist-customer-info")
+	public String registCustomerInfo(CustomerInfoVO civo) {
+		cService.registCustomerInfo(civo);
+		return "redirect:customer_list.do";
 	}
 	
 	@RequestMapping("/customer_info.do")
 	public ModelAndView moveCustomerInfo(String cId) {
-		
 		mav.addObject("customerInfo", cService.getCustomerInfo(cId));
 		mav.setViewName("customer/customer_info");
 		return mav;
 	}
 
 	@GetMapping("/customer_update.do")
-	public ModelAndView moveCustomerUpdate(int cIndex) {
-		
-		mav.addObject("c", cService.getCustomerInfo(cIndex));
+	public ModelAndView moveCustomerUpdate(String cId) {
+		mav.addObject("c", cService.getCustomerInfo(cId));
 		mav.setViewName("customer/customer_edit_form");
 		return mav;
 	}

@@ -48,8 +48,7 @@ public class CustomerService {
 	}
 
 
-	public CustomerVO getCustomerInfo(String cId) {
-		
+	public List<CustomerInfoVO> getCustomerInfo(String cId) {
 		return cDao.getCustomerInfo(cId);
 	}
 

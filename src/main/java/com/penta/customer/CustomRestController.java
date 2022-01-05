@@ -22,9 +22,9 @@ public class CustomRestController {
 	
 	@ResponseBody
 	@RequestMapping(value="/get-customerinfo", produces = "application/text; charset=utf8")
-	public String getCustomerInfo(String idx_s){
-		int idx = Integer.parseInt(idx_s);
-		return new Gson().toJson(cDao.getCustomerInfo(idx));
+	public String getCustomerInfo(String id){
+		int idx = Integer.parseInt(id);
+		return new Gson().toJson(cDao.getCustomerInfo(id));
 	}
 	
 	@Transactional

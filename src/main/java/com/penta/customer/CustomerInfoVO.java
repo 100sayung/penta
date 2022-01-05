@@ -15,4 +15,11 @@ public class CustomerInfoVO {
 	private String ciDegree;
 	private String ciMemo;
 	private String pId;
+	
+
+	private int cIndex;
+	private String cName;
+	private String cAddr;
+	private String cSales;
+	private String pentauser;
 }
