@@ -44,10 +44,12 @@ public class ServiceController {
 	}
 
     @RequestMapping("/service_list.do")
-	public String getList(HttpServletRequest req) throws Exception {
+	public String getList(String scId, HttpServletRequest req) throws Exception {
 		//DB
 
-		List<ServiceVO> list = dao.getDBList();
+		System.out.println("scid ============= " + scId);
+
+		List<ServiceVO> list = dao.getDBList(scId);
 		req.setAttribute("list", list);
 		return "service/service_list";
 	}

@@ -1,45 +1,150 @@
 package com.penta.service;
 
 public class ServiceVO {
-    int ComIndex;
-    String ComId;
-    String ComKey;
-    String ComValue;
+    int sIndex;
+    String scId;
+    String smId;
+    String sprId;
+    String speId;
+    String sType;
+    String sWork;
+    String sMemo;
+    String sInDate;
+    String sInTime;
+    String sEndTime;
+    String sEndDate;
+    int sServTime;
+    String sFileName;
 
-    public int getComIndex() {
-        return this.ComIndex;
+    public int getSIndex() {
+        return this.sIndex;
     }
 
-    public void setComIndex(int ComIndex) {
-        this.ComIndex = ComIndex;
+    public void setSIndex(int sIndex) {
+        this.sIndex = sIndex;
     }
 
-    public String getComId() {
-        return this.ComId;
+    public String getScId() {
+        return this.scId;
     }
 
-    public void setComId(String ComId) {
-        this.ComId = ComId;
+    public void setScId(String scId) {
+        this.scId = scId;
     }
 
-    public String getComKey() {
-        return this.ComKey;
+    public String getSmId() {
+        return this.smId;
     }
 
-    public void setComKey(String ComKey) {
-        this.ComKey = ComKey;
+    public void setSmId(String smId) {
+        this.smId = smId;
     }
 
-    public String getComValue() {
-        return this.ComValue;
+    public String getSprId() {
+        return this.sprId;
     }
 
-    public void setComValue(String ComValue) {
-        this.ComValue = ComValue;
+    public void setSprId(String sprId) {
+        this.sprId = sprId;
     }
 
+    public String getSpeId() {
+        return this.speId;
+    }
+
+    public void setSpeId(String speId) {
+        this.speId = speId;
+    }
+
+    public String getSType() {
+        return this.sType;
+    }
+
+    public void setSType(String sType) {
+        this.sType = sType;
+    }
+
+    public String getSWork() {
+        return this.sWork;
+    }
+
+    public void setSWork(String sWork) {
+        this.sWork = sWork;
+    }
+
+    public String getSMemo() {
+        return this.sMemo;
+    }
+
+    public void setSMemo(String sMemo) {
+        this.sMemo = sMemo;
+    }
+
+    public String getSInDate() {
+        return this.sInDate;
+    }
+
+    public void setSInDate(String sInDate) {
+        this.sInDate = sInDate;
+    }
+
+    public String getSInTime() {
+        return this.sInTime;
+    }
+
+    public void setSInTime(String sInTime) {
+        this.sInTime = sInTime;
+    }
+
+    public String getSEndTime() {
+        return this.sEndTime;
+    }
+
+    public void setSEndTime(String sEndTime) {
+        this.sEndTime = sEndTime;
+    }
+
+    public String getSEndDate() {
+        return this.sEndDate;
+    }
+
+    public void setSEndDate(String sEndDate) {
+        this.sEndDate = sEndDate;
+    }
+
+    public int getSServTime() {
+        return this.sServTime;
+    }
+
+    public void setSServTime(int sServTime) {
+        this.sServTime = sServTime;
+    }
+
+    public String getSFileName() {
+        return this.sFileName;
+    }
+
+    public void setSFileName(String sFileName) {
+        this.sFileName = sFileName;
+    }
+
+    
 	@Override
 	public String toString() {
-		return "ServiceVO [comIndex=" + ComIndex + ", comId=" + ComId + ", comKey=" + ComKey + ", comValue=" + ComValue + "]";
+		return "ServiceVO [sIndex=" + sIndex + 
+        ", scId=" + scId + 
+        ", smId=" + smId + 
+        ", sprId=" + sprId +
+        ", speId=" + speId +
+        ", sType=" + sType +
+        ", sWork=" + sWork +
+        ", sMemo=" + sMemo +
+        ", sInDate=" + sInDate +
+        ", sInTime=" + sInTime +
+        ", sEndTime=" + sEndTime +
+        ", sEndDate=" + sEndDate +
+        ", sServTime=" + sServTime +
+        ", sFileNmae=" + sFileName +
+         "]";
 	}
 }

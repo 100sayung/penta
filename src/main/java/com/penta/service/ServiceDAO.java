@@ -15,8 +15,8 @@ public class ServiceDAO {
 		return session.insert("mapper-service.insertDB", cvo);
 	}
 
-	public List<ServiceVO> getDBList() throws Exception {
-		return session.selectList("mapper-service.getDBList");
+	public List<ServiceVO> getDBList(String scId) throws Exception {
+		return session.selectList("mapper-service.getDBList", scId);
 	}
 
 	public int updateDB(ServiceVO cvo) throws Exception {	

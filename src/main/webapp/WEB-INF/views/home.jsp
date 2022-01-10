@@ -41,26 +41,59 @@ google Drive 제품 정리<br>
 - 37 남동훈 사원 -><br>
 ==> <a href="/suptman/common/37Project.do" target="new">개발플젝 info</a><br>
 - 38 주영환 책임 -><br>
+==> <a href="/suptman/common/38Project.do" target="new">38 Server info</a><br>
 - 192.168.133.10 주영환 책임 -><br>      
 URL: <a href="https://192.168.133.10/" target="_blank">https://192.168.133.10/</a><br>
+        <br>
+      <table style="width: 100%;border: 1px;" >
+        <tr>
+          <td>
+            =======<br>
+            PentaSystem Link<br>
+            =======<br>
+          </td>
+          <td>
+            - <a href="http://www.penta.co.kr" target="_blank">Penta Homepage</a><br>
+            - <a href="http://gw.penta.co.kr" target="_blank">GroupWare</a><br>
+            - <a href="http://file.penta.co.kr" target="_blank">FileSystem</a><br>
+            <br>                     
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+          </td>
+        
+        </tr>
+        <tr>
+          <td>
+            =======<br>
+            Jennifer Link<br>
+            =======<br>
+          </td>
+          <td>
+            <br>
+            - <a href="http://support.jennifersoft.com:27900/login" target="_blank">Demo Jennifer</a><br>
+            - <a href="http://192.168.100.37:7979/login" target="_blank">Demo So</a><br>
+            - <a href="https://home.jennifersoft.com/login.jsp" target="_blank">License</a><br>
+            - <a href="http://issue.jennifersoft.com/secure/Dashboard.jspa" target="_blank">Jira</a><br>
+          </td>
+          <td>
+            =======<br>
+            Oracle Link<br>
+            =======<br>
+          </td>
+          <td>
+            - <a href="http://Support.oracle.com" target="_blank">Support</a><br>
+          </td>
+        
+        </tr>
+        
+      </table>
+
 
 <br>
-=======<br>
-Jennifer Link<br>
-=======<br>
-- <a href="http://support.jennifersoft.com:27900/login" target="_blank">Demo Jennifer</a><br>
-- <a href="http://192.168.100.37:7979/login" target="_blank">Demo So</a><br>
-- <a href="https://home.jennifersoft.com/login.jsp" target="_blank">License</a><br>
-- <a href="http://issue.jennifersoft.com/secure/Dashboard.jspa" target="_blank">Jira</a><br>
-<br>
-=======<br>
-Oracle Link<br>
-=======<br>
-- <a href="http://Support.oracle.com" target="_blank">Support</a><br>
-
-
-
-
       </td>
       <td>안일훈</td>
       <td><a href="/suptman/common/common_list.do" class="btn btn-default btn-lg" >공통 리스트</a></td>
@@ -83,7 +116,7 @@ Oracle Link<br>
     </tr>    
     <tr>     
       <td>안일훈</td>
-      <td><a href="/suptman/service/service_list.do" class="btn btn-default btn-lg" >지원 내역(Support) 리스트</a></td>
+      <td><a href="/suptman/service/service_list.do?scId=penta" class="btn btn-default btn-lg" >지원 내역(Support) 리스트</a></td>
     </tr>
   </tbody>
 </table>

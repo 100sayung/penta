@@ -35,7 +35,7 @@
 		<select name='pName' id='pName' onchange='changeSelection()'>
 			<option value="all" selected="selected">모두보기</option>
 			<c:forEach items="${engineer}" var="e">
-				<option value="${e.getPId()}">${e.getPName()}</option>
+				<option value="${e.getPId()}">${e.getPName()} ${e.getPRank()}</option>
 			</c:forEach>
 		</select>
 			<div id="customerBody">
@@ -47,11 +47,6 @@
 <button type="button" class="click btn btn-info" onclick="readInfo(penta)">자세히보기</button>
 								
 	<script type="text/javascript">
-	
-function updateInfo(id) {
-	location.href="/suptman/customer/customer_update.do?cId="+id;
-}
-	
 function readInfo(id) {
 	location.href="/suptman/customer/customer_info_list.do?cId="+id;
 }
@@ -87,7 +82,7 @@ function makeCustomerTable(customerList){
 		str += "<td>" + customerList[c].cAddr + "</td>";
 		str += "<td>" + customerList[c].cSales + "</td>";
 		str += "<td><button type='button' class='click btn btn-info' onclick='readInfo(\""+customerList[c].cId+"\")'>자세히보기</button>";
-		str += "<button type='button' class='click btn btn-info' onclick='(\""+customerList[c].cId+"\")'>변경하기</button></td>";
+		str += "<button type='button' class='click btn btn-info' onclick='location.href=\"/suptman/customer/customer_update.do?cId="+customerList[c].cId+"\"'>변경하기</button></td>";
 	}
 	str+="</tbody></table>";
 	$("#customerBody").html(str);

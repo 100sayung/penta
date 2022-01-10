@@ -48,21 +48,34 @@ public class CustomerService {
 	}
 
 
-	public List<CustomerInfoVO> getCustomerInfo(String cId) {
-		return cDao.getCustomerInfo(cId);
+	public List<CustomerInfoVO> getCustomerInfoFromCiIndex(String ciIndex) {
+		return cDao.getCustomerInfoFromCiIndex(Integer.parseInt(ciIndex));
+	}
+
+
+
+
+
+	public List<PentaVO> getPentaUserList() throws Exception {
+		return cDao.getPUser();
+	}
+
+
+	public CustomerVO getCustomer(String cId) {
+		return cDao.getCustomer(cId);
 	}
 
 
 	@Transactional
 	public void updateCustomer(CustomerVO cvo) {
 		cDao.updateCustomer(cvo);
-		cDao.updateCustomerInfo(cvo);
+	}
+	public void updateCustomerInfo(CustomerInfoVO civo) {
+		cDao.updateCustomerInfo(civo);
 	}
 
 
-
-	public List<PentaVO> getPentaUserList() throws Exception {
-		
-		return pDao.getDBList();
+	public List<CustomerInfoVO> getCustomerInfoFromCId(String cId) {
+		return cDao.getCustomerInfoFromCId(cId);
 	}
 }

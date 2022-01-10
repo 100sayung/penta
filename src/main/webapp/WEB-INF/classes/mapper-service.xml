@@ -3,31 +3,33 @@
 <mapper namespace="mapper-service">
 
 	<insert id="insertDB" parameterType="com.penta.service.ServiceVO">
-		insert into com_code(ComIndex,Com_Id,Com_Key,Com_Value)
-		values(comcodeindex.nextval,#{ComId},#{ComKey},#{ComValue})
+		insert into serviceinfo( sIndex, scId, smId, sprId, speId, sType, sWork, sMemo, sInDate, sInTime, sEndTime, sEndDate, sServTime, sFileName)
+		values(serviceinfo_seq.nextval,#{scId},#{smId},#{sprId},#{speId},#{sType},#{sWork},#{sMemo},#{sInDate},#{sInTime},#{sEndTime},#{sEndDate},#{sServTime},#{sFileName})
 	</insert>
 
 	<update id="updateDB" parameterType="com.penta.service.ServiceVO">
-		update com_code
-		set Com_Id=#{ComId},Com_Key=#{ComKey},Com_Value=#{ComValue}
-		where ComIndex = #{ComIndex}
+		update serviceinfo
+		set smId=#{smId},sprId=#{sprId},speId=#{speId},sType=#{sType},
+		sWork=#{sWokr},sMemo={sMemo}, sInDate=#{sInDate}, sInTime=#{sInTime},
+		sEndTime=#{sEndTime}, sEndDate=#{sEndDate}, sServTime=#{sServTime}, sFileName=#{sFileNmae}
+		where sIndex = #{sIndex} and scId = #{scId}
 	</update>
 
 	<delete id="deleteDB" parameterType="int">
 		delete
-		from com_code
-		where ComIndex = #{ComIndex}
+		from serviceinfo
+		where sIndex = #{sIndex}
 	</delete>
 	
-	<select id="getDBList" resultType="com.penta.service.ServiceVO">
+	<select id="getDBList" resultType="com.penta.service.ServiceVO" parameterType="String">
 		select *
-		from com_code
+		from serviceinfo where scid = #{scId} order by sInDate
 	</select>
 	
 	<select id="getDBById" resultType="com.penta.service.ServiceVO" parameterType="int">
 		select *
-		from com_code
-		where ComIndex = #{ComIndex}
+		from serviceinfo
+		where sIndex = #{sIndex}
 	</select>
 	
 </mapper>

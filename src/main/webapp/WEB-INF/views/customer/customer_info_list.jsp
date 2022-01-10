@@ -39,7 +39,8 @@
 				</thead><tbody>
 					<c:forEach items="${customerInfo}" var="ci">
 					<tr><td>${ci.getCName()}</td><td>${ci.getPName()}</td><td>${ci.getPVersion()}</td><td>${ci.getPentauser()}</td>
-					<td><button type='button' class='click btn btn-info' onclick='readInfo("${ci.getCId()}")'>자세히보기</button></td>
+					<td><button type='button' class='click btn btn-info' onclick='readInfo("${ci.getCiIndex()}")'>자세히보기</button>
+			<button type='button' class='click btn btn-info' onclick='updateInfo("${ci.getCiIndex()}")'>변경하기</button></td>
 					</c:forEach>		
 				</tbody>
 			</table>
@@ -54,13 +55,13 @@
 								
 	<script type="text/javascript">
 	
-function updateInfo(id) {
-	location.href="/suptman/customer/customer_update.do?cId="+id;
+function readInfo(index) {
+	$("#test").load("/suptman/customer/customer_info.do?ciIndex="+index);
 }
-	
-function readInfo(id) {
-	$("#test").load("/suptman/customer/customer_info.do?cId="+id);
+function readInfo(index) {
+	location.href="/suptman/customer/customer_info_update.do?ciIndex="+index;
 }
+
 
 $(".click").click(function() {
 	readInfo($(this).attr("id"));

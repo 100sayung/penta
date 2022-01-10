@@ -41,7 +41,7 @@ public class CustomerController {
 	
 	@GetMapping("/customer_info_list.do")
 	public ModelAndView moveCustomerInfoList(String cId) {
-		mav.addObject("customerInfo", cService.getCustomerInfo(cId));
+		mav.addObject("customerInfo", cService.getCustomerInfoFromCId(cId));
 		mav.setViewName("customer/customer_info_list");
 		return mav;
 	}
@@ -60,16 +60,24 @@ public class CustomerController {
 	}
 	
 	@RequestMapping("/customer_info.do")
-	public ModelAndView moveCustomerInfo(String cId) {
-		mav.addObject("customerInfo", cService.getCustomerInfo(cId));
+	public ModelAndView moveCustomerInfo(String ciIndex) {
+		mav.addObject("customerInfo", cService.getCustomerInfoFromCiIndex(ciIndex));
 		mav.setViewName("customer/customer_info");
+		System.out.println(ciIndex);
 		return mav;
 	}
 
 	@GetMapping("/customer_update.do")
 	public ModelAndView moveCustomerUpdate(String cId) {
-		mav.addObject("c", cService.getCustomerInfo(cId));
+		mav.addObject("c", cService.getCustomer(cId));
 		mav.setViewName("customer/customer_edit_form");
+		return mav;
+	}
+	
+	@GetMapping("/customer_info_update.do")
+	public ModelAndView moveCustomerInfoUpdate(String ciIndex) {
+		mav.addObject("ci", cService.getCustomerInfoFromCiIndex(ciIndex));
+		mav.setViewName("customer/customer_info_edit_form");
 		return mav;
 	}
 	
@@ -78,6 +86,13 @@ public class CustomerController {
 		
 		cService.updateCustomer(cvo);
 		return "redirect:customer_list.do";
+	}
+	
+	@RequestMapping("/update-customer-info")
+	public String updateCustomerInfo(CustomerInfoVO civo) {
+		
+		cService.updateCustomerInfo(civo);
+		return "redirect:customer_info_list.do";
 	}
 
 }

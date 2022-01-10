@@ -29,11 +29,11 @@
   </div>
   <div class="form-group">
     <label for="cId" class="control-label">고객사 ID*</label>
-    <input type="text" class="form-control" name="cId" value="${c.getCId()}" id="cId" placeholder="고객사 ID">
+    <input type="text" class="form-control" name="cId" value="${c.getCId()}" id="cId" placeholder="고객사 ID" disabled="disabled">
   </div> 
   <div class="form-group">
     <label for="cAddr" class="control-label">고객사 주소*</label>
-    <input type="text" class="form-control" name="cAddr" value="${c.getAddr()}" id="cAddr" placeholder="고객사 주소">
+    <input type="text" class="form-control" name="cAddr" value="${c.getCAddr()}" id="cAddr" placeholder="고객사 주소">
   </div>
   <div class="form-group">
     <label for="cSales" class="control-label">담당영업*</label>
@@ -42,6 +42,7 @@
   <div class="form-group">
     <input type="button" class="btn btn-default btn-lg btn-block" value="등록하기" onclick="chkInp();"/>  
   </div>
+  <input type="hidden" name="cIndex" value="${c.getCIndex()}">
 </form>
 </div>
 
@@ -57,10 +58,9 @@ function chkInp(){
 	
 	var a=$("#cName").val().replace(/ /g,"").length;
 	var b=$("#cAddr").val().replace(/ /g,"").length;
-	var c=$("#pName").val().replace(/ /g,"").length;
 	var d=$("#cId").val().replace(/ /g,"").length;
 	var g=$("#cSales").val().replace(/ /g,"").length;
-	if((a*b*c*d*g)==0){
+	if((a*b*d*g)==0){
 		alert("별표시는 필수 입력사항 입니다.");
 	}else{
 		$('#editFrm').submit();

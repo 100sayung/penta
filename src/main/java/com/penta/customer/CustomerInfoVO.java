@@ -15,6 +15,7 @@ public class CustomerInfoVO {
 	private String ciDegree;
 	private String ciMemo;
 	private String pId;
+	private int ciIndex;
 	
 
 	private int cIndex;

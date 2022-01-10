@@ -24,7 +24,7 @@ public class CustomRestController {
 	@RequestMapping(value="/get-customerinfo", produces = "application/text; charset=utf8")
 	public String getCustomerInfo(String id){
 		int idx = Integer.parseInt(id);
-		return new Gson().toJson(cDao.getCustomerInfo(id));
+		return new Gson().toJson(cDao.getCustomerInfoFromCId(id));
 	}
 	
 	@Transactional

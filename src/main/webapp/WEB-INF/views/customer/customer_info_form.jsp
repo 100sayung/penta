@@ -98,6 +98,7 @@
 $(document).ready(function(){
 	$("#product").html('<label for="pName" class="control-label">제품 이름*</label><br>'+loadProduct());
 	$("#customerList").html(loadCustomerListFromPId("all"));
+	$("#productVersion").html('<label for="pVersion" class="control-label">소프트웨어 버전*</label><br>'+loadProductVersion($("#pName").val()));
 })
 
 function chkInp(){
