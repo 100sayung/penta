@@ -40,6 +40,7 @@ google Drive 제품 정리<br>
 = 환결 설정 변화시 공유<br>
 - 37 남동훈 사원 -><br>
 ==> <a href="/suptman/common/37Project.do" target="new">개발플젝 info</a><br>
+==> 공통 제품 관리 192.168.100.37 /u01/sw/oracle 참조해서 쓰기<br>
 - 38 주영환 책임 -><br>
 ==> <a href="/suptman/common/38Project.do" target="new">38 Server info</a><br>
 - 192.168.133.10 주영환 책임 -><br>      
@@ -78,6 +79,7 @@ URL: <a href="https://192.168.133.10/" target="_blank">https://192.168.133.10/</
             - <a href="http://192.168.100.37:7979/login" target="_blank">Demo So</a><br>
             - <a href="https://home.jennifersoft.com/login.jsp" target="_blank">License</a><br>
             - <a href="http://issue.jennifersoft.com/secure/Dashboard.jspa" target="_blank">Jira</a><br>
+            - <a href="https://docs.jennifersoft.com/" target="_blank">Docs</a><br>
           </td>
           <td>
             =======<br>
@@ -86,6 +88,7 @@ URL: <a href="https://192.168.133.10/" target="_blank">https://192.168.133.10/</
           </td>
           <td>
             - <a href="http://Support.oracle.com" target="_blank">Support</a><br>
+            - <a href="http://edelivery.oracle.com/" target="_blank">edelivery 제품 다운로드</a><br>
           </td>
         
         </tr>

@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.penta.customer.CustomerDAO">
-	<select id="test" resultType="com.penta.common.PentaUserVO">
+	<select id="test" resultType="com.penta.penta.PentaVO">
 		select * from PENTAUSER
 	</select>
 
 	<insert id="registCustomer"
 		parameterType="com.penta.customer.CustomerVO">
 		INSERT INTO customer
-		(C_Index, C_Name, C_Addr, C_Sales, C_Id)
-		VALUES (CUSTOMER_SEQ.nextval, #{cName}, #{cAddr}, #{cSales}, #{cId})
+		(C_Index, C_Name, C_Addr, C_Sales,
+		C_Id)
+		VALUES (CUSTOMER_SEQ.nextval, #{cName}, #{cAddr}, #{cSales},
+		#{cId})
 
 	</insert>
 	<insert id="registCustomerInfo"
 		parameterType="com.penta.customer.CustomerVO">
 		INSERT INTO CUSTOMERINFO
-		(C_ID, P_NAME, P_VERSION, CI_HWOS,
+		(C_ID, P_NAME, P_VERSION,
+		CI_HWOS,
 		CI_SYSTEM, CI_CHECK, CI_MONTHLY, CI_DEGREE,
-		CI_MEMO, P_ID)
+		CI_MEMO, P_ID,
+		CI_INDEX)
 		VALUES (#{cId}, #{pName}, #{pVersion}, #{ciHWOS},
 		#{ciSystem}, #{ciCheck}, #{ciMonthly}, #{ciDegree},
-		#{ciMemo}, #{pId})
+		#{ciMemo}, #{pId}, ci_seq.nextval)
 
 	</insert>
 	<select id="getCustomerListFromPId" parameterType="String"
@@ -29,7 +33,7 @@
 		LEFT OUTER JOIN CUSTOMERINFO ci
 		ON c.C_Id = ci.C_Id
 		WHERE ci.P_Id = #{pId}
-
+		ORDER BY C.C_NAME ASC
 	</select>
 
 	<update id="updateCustomer"
@@ -49,7 +53,7 @@
 		WHERE C_ID = #{cId}
 	</update>
 
-	<select id="getCustomerInfo" parameterType="String"
+	<select id="getCustomerInfoFromCId" parameterType="String"
 		resultType="com.penta.customer.CustomerInfoVO">
 		select c.C_ID,
 		c.c_sales,
@@ -59,15 +63,39 @@
 		ci.ci_degree,
 		ci.ci_memo,
 		ci.ci_monthly,
-		p.pname,
+		p.pname pentauser,
 		ci.p_id,
 		ci.ci_hwos,
 		ci.ci_system,
 		ci.p_name,
 		ci.p_version,
-		ci.p_id
+		ci.p_id,
+		ci.ci_index
 		from customer c, pentauser p, customerinfo ci
-		where c.c_id = ci.c_id and p.pid = ci.p_id
+		where c.c_id = ci.c_id
+		and p.pid = ci.p_id and ci.c_id=#{cId}
+	</select>
+	
+	<select id="getCustomerInfoFromCiIndex" parameterType="Int"
+		resultType="com.penta.customer.CustomerInfoVO">
+		select c.C_ID,
+		c.c_sales,
+		ci.ci_system,
+		ci.p_name,
+		ci.p_version,
+		ci.p_id,
+		ci.ci_index
+		from customer c, pentauser p, customerinfo ci
+		where c.c_id = ci.c_id
+		and p.pid = ci.p_id and ci.ci_index=#{ciIndex}
+	</select>
+	
+	<!-- mapper-penta -->
+	<select id="getPUser" resultType="com.penta.penta.PentaVO">
+		select p.pid, p.pname, p.php, p.pemail, p.paddr, p.pstatus, p.pmemo,
+		c.com_value as pRank from pentauser p
+		left outer join com_code c
+		on p.prank = c.com_key
 	</select>
 
 </mapper>

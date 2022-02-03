@@ -24,8 +24,7 @@
 		CI_INDEX)
 		VALUES (#{cId}, #{pName}, #{pVersion}, #{ciHWOS},
 		#{ciSystem}, #{ciCheck}, #{ciMonthly}, #{ciDegree},
-		#{ciMemo}, #{pId},
-		ci_seq.nextval)
+		#{ciMemo}, #{pId}, ci_seq.nextval)
 
 	</insert>
 	<select id="getCustomerListFromPId" parameterType="String"
@@ -44,11 +43,6 @@
 		C_Sales=#{cSales}, C_Id=#{cId}
 		WHERE C_Index=#{cIndex}
 	</update>
-	
-	
-
-	
-	
 	<update id="updateCustomerInfo"
 		parameterType="com.penta.customer.CustomerVO">
 		UPDATE CUSTOMERINFO
@@ -81,20 +75,11 @@
 		where c.c_id = ci.c_id
 		and p.pid = ci.p_id and ci.c_id=#{cId}
 	</select>
-
+	
 	<select id="getCustomerInfoFromCiIndex" parameterType="Int"
 		resultType="com.penta.customer.CustomerInfoVO">
 		select c.C_ID,
 		c.c_sales,
-		c.c_addr,
-		c.c_name,
-		ci.ci_check,
-		ci.ci_degree,
-		ci.ci_memo,
-		ci.ci_monthly,
-		p.pname pentauser,
-		ci.p_id,
-		ci.ci_hwos,
 		ci.ci_system,
 		ci.p_name,
 		ci.p_version,
@@ -104,9 +89,7 @@
 		where c.c_id = ci.c_id
 		and p.pid = ci.p_id and ci.ci_index=#{ciIndex}
 	</select>
-
-
-
+	
 	<!-- mapper-penta -->
 	<select id="getPUser" resultType="com.penta.penta.PentaVO">
 		select p.pid, p.pname, p.php, p.pemail, p.paddr, p.pstatus, p.pmemo,

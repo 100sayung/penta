@@ -22,8 +22,10 @@
 	</delete>
 	
 	<select id="getDBList" resultType="com.penta.service.ServiceVO" parameterType="String">
-		select *
-		from serviceinfo where scid = #{scId} order by sInDate
+		<!-- select * from serviceinfo where scid = #{scId} order by sInDate  -->
+		select s.*, c.c_name as scname 
+		from serviceinfo s, customer c 
+		where s.scid = c.c_id and s.scid = #{scId} order by s.sInDate
 	</select>
 	
 	<select id="getDBById" resultType="com.penta.service.ServiceVO" parameterType="int">
